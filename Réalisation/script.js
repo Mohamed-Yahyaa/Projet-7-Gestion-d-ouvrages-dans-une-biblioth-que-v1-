@@ -3,7 +3,7 @@ document.getElementById("formSubmit").addEventListener("submit", function (event
     event.preventDefault();
     if (validate()) {
         var work = readwork();
-        if (selectedRow == null)
+        if (selectedRow == null) 
             insertNewRow(work);
         else
         if (confirm("Êtes-vous sûr pour modifier ?"))
