@@ -6,9 +6,10 @@ document.getElementById("formSubmit").addEventListener("submit", function (event
         if (selectedRow == null) 
             insertNewRow(work);
         else
-        if (confirm("Êtes-vous sûr pour modifier ?"))
+        if (confirm("Êtes-vous sûr de modifier cette œuvre?"))
             editRow(work)
         resetForm();
+        hide()
     } else {
         alert("S'il-vous-plaît remplissez tous les champs requis")
     }
@@ -24,47 +25,54 @@ function resetForm() {
     selectedRow = null;
 }
 
-var onEditButton = document.getElement
+var onEditButton = document.getElemen
 
 function readwork() {
 
     var work = {};
     work.title = document.getElementById("inputTitle").value;
-    work.author = document.getElementById("inputAuthor").value;
-    work.price = parseFloat(document.getElementById("inputPrix").value);
-    work.date = document.getElementById("inputDate").value;
-    work.language = document.getElementById("inputLanguage").value;
-    work.type = document.querySelector('input[name="workType"]:checked').value
+    work["author"] = document.getElementById("inputAuthor").value;
+    work["price"] = parseFloat(document.getElementById("inputPrix").value);
+    work["date"] = document.getElementById("inputDate").value;
+    work["language"] = document.getElementById("inputLanguage").value;
+    work["type"] = document.querySelector('input[name="workType"]:checked').value
     return work;
 }
+
+
 
 function insertNewRow(work) {
     var tableBody = document.getElementById("worksTable").getElementsByTagName('tbody')[0];
     var newRow = tableBody.insertRow(tableBody.length);
     newRow.insertCell(0).innerHTML = work.title;
-    newRow.insertCell(1).innerHTML = work.author;
-    newRow.insertCell(2).innerHTML = work.price;
-    newRow.insertCell(3).innerHTML = work.date;
-    newRow.insertCell(4).innerHTML = work.language;
-    newRow.insertCell(5).innerHTML = work.type;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = work.author;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = work.price;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = work.date;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = work.language
+    cell6 = newRow.insertCell(5)
+    cell6.innerHTML = work.type
     cell7 = newRow.insertCell(6)
 
     var editButton = document.createElement("button")
     var deleteButton = document.createElement("button")
 
-    var editContent = document.createTextNode("Modifier")
-    editButton.appendChild(editContent);
-    editButton.className = "btn btn-primary"
+    var editContent = document.createTextNode("Edit")
+    editButton.appendChild(editContent)
+    editButton.className = "btn btn-primary me-1"
     editButton.setAttribute('onclick', 'onEdit(this)')
 
-    var deleteContent = document.createTextNode('Supprimer')
+    var deleteContent = document.createTextNode('Delete')
     deleteButton.appendChild(deleteContent)
     deleteButton.className = "btn btn-secondary"
     deleteButton.setAttribute("onclick", 'onDelete(this)')
 
-    cell7.appendChild(editButton);
-    cell7.appendChild(deleteButton);
-
+    cell7.appendChild(editButton)
+    cell7.appendChild(deleteButton)
+hide();
 }
 
 function onEdit(td) {
@@ -80,7 +88,7 @@ function onEdit(td) {
         if (checkValue[i].value == selectedRow.cells[5].innerHTML) {
             checkValue[i].checked = true
         }
-    }
+    } show();
 }
 
 function editRow(workToEdit) {
@@ -90,15 +98,18 @@ function editRow(workToEdit) {
     selectedRow.cells[3].innerHTML = workToEdit.date;
     selectedRow.cells[4].innerHTML = workToEdit.language;
     selectedRow.cells[5].innerHTML = workToEdit.type;
-
+    
 }
+
+
 
 function onDelete(td) {
-    if (confirm("Êtes-vous sûr de supprimer?")) {
+    if (confirm("Êtes-vous sûr de supprimer cette œuvre?")) {
         row = td.parentElement.parentElement;
         document.getElementById("worksTable").deleteRow(row.rowIndex)
-    }
+    }resetForm();
 }
+
 
 function validate() {
     var isValid = true;
@@ -121,4 +132,26 @@ function validate() {
         isValid = false;
     }  
     return isValid;
+}
+// reset the work
+function resetForm(){
+    document.getElementById('inputTitle').value ='';
+    document.getElementById('inputAuthor').value ='';
+    document.getElementById('inputPrix').value ='';
+    document.getElementById('inputDate').value ='';
+    document.getElementById('inputLanguage').value ='';
+    document.getElementById('gridCheck').value ='';
+
+}
+function show(){
+
+    
+    document.querySelector('#formulaire').style.display = 'flex';
+
+}
+function hide(){
+
+    
+    document.querySelector('#formulaire').style.display = 'none';
+
 }
