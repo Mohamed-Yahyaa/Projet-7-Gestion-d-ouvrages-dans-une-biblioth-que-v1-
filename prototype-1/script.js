@@ -1,4 +1,4 @@
-var Workmanager = new Workmanager();
+var WorkBLO = new Workmanager();
 
 var selectedRow = null;
 var rowId = null;
