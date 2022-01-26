@@ -12,8 +12,6 @@ document.getElementById("formSubmit").addEventListener("submit", function (event
     event.preventDefault();
     var work = readwork();
     if (selectedRow == null) {
-        // work.id = workManager.counter
-        // workManager.counter++;
         workManager.addWork(work);
         alert(work.workDetail())
     } else
