@@ -6,7 +6,7 @@ a {
     color: #ffffff !important;
 }
 .sb-sidenav-custom {
-    background-color: #585656!important;
+    background-color:#ffffff!important;
 }
 
 .btn-primary-custom {
@@ -30,15 +30,15 @@ a {
   }
 
   .btn-secondary-custom {
-    background-color: #6A8490 !important;
+    background-color: #4db2b9 !important;
     border-color: #3D412C;
     color: #FAF9F8;
     
   }
   .btn-secondary-custom:hover {
-    background-color: #FAF9F8 !important;
+    background-color: #6fe6ae !important;
     border-color: #3D412C;
-    color: #6A8490;
+    color: #ffffff;
 }
 
 .btn-secondary-custom:active, .btn-secondary-custom.active {
